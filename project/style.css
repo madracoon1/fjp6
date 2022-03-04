@@ -1,0 +1,60 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 50px;
+}
+
+h1 {
+    font-weight: normal;
+}
+
+ul {
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+    font-size: x-large;
+}
+
+nav {
+    width: 28rem;
+    margin-top: 4px;
+}
+
+nav li:hover {
+    color: orange;
+    cursor: pointer;
+}
+
+.bigImg {
+    width: 95vw;
+    margin: 1rem;
+    margin-left: 1.4vw;
+}
+
+.container {
+    display: flex;
+    /* margin-top: 60px; */
+    margin: 60px 2vw 60px 2vw;
+}
+
+.container div {
+    text-align: center;
+    margin: 0 1vw 0 1vw;
+}
+
+.container div p {
+    font-size: x-large;
+}
+
+footer {
+    text-align: center;
+    background: black;
+    height: 4rem;
+    color: whitesmoke;
+    font-size: x-large;
+}
+
+footer p {
+    padding: 1rem;
+}
+
