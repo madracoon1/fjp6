@@ -1,10 +1,11 @@
 const request = require("request");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
+const fs = require('fs');
 
 const link = "https://www.espncricinfo.com/series/ipl-2021-1249214/match-results";
 
-let leaderboard = [];
+let leaderboard = []; let counter = 0;
 
 request(link,cb);
 
@@ -20,7 +21,11 @@ function cb(error,response,html){
             let completeLink = "https://www.espncricinfo.com"+link;
             // console.log(completeLink);
             request(completeLink,cb2);
+            counter++;
         }
+        // console.log("Line 24: ",leaderboard);
+
+        
     }
 }
 
@@ -40,15 +45,18 @@ function cb2(error,response,html){
                 let fours = cells[5].textContent;
                 let sixes = cells[6].textContent;
                 // console.log("Name : ",name,"Runs : ",runs,"Balls : ",balls,"Fours : ",fours,"Sixes : ",sixes);
+                processPlayer(name,runs,balls,fours,sixes);
             }
+        }
+        // console.log("Line 46",leaderboard);
+
+        counter--;
+        if(counter == 0){
+            let data = JSON.stringify(leaderboard);
+            fs.writeFileSync('batsmenDetails.json', data);
         }
     }
 }
-
-processPlayer('Rohit','15','4','2','4');
-processPlayer('Virat','50','20','4','3')
-processPlayer('Rohit','40','20','1','2');
-console.log(leaderboard);
 
 function processPlayer(name,runs,balls,fours,sixes){
     runs = Number(runs);
@@ -60,6 +68,7 @@ function processPlayer(name,runs,balls,fours,sixes){
         if(playerObj.Name == name){
             //will do some work here
             playerObj.Runs+=runs;
+            playerObj.Innings+=1;
             playerObj.Balls+=balls;
             playerObj.Fours+=fours;
             playerObj.Sixes+=sixes;
@@ -69,6 +78,7 @@ function processPlayer(name,runs,balls,fours,sixes){
     // code coming here means we did not find our player inside leaderboard
     let obj = {
         Name:name,
+        Innings:1,
         Runs:runs,
         Balls:balls,
         Fours:fours,
@@ -76,3 +86,5 @@ function processPlayer(name,runs,balls,fours,sixes){
     }
     leaderboard.push(obj);
 }
+
+// console.log("Line 80: ",leaderboard);
