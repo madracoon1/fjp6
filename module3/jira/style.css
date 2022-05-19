@@ -1,91 +1,97 @@
-*{
+* {
     box-sizing: border-box;
 }
 
-body{
+body {
     margin: 0px;
     padding: 0px;
+    background-color: #E0DDAA;
 }
 
-.toolbox-cont{
+.toolbox-cont {
     height: 5rem;
-    background-color: black;
+    background-color: #141E27;
     display: flex;
     align-items: center;
+    position: fixed;
+    width: 100vw;
+    top: 0px
 }
 
-.toolbox-priority-cont{
+.toolbox-priority-cont {
     height: 3rem;
-    background-color: beige;
+    background-color: #EEEDDE;
     width: 18rem;
     margin-left: 5rem;
     display: flex;
-    justify-content: space-around;
     align-items: center;
+    justify-content: space-around;
+    border-radius: 2px;
 }
 
-.action-btn-cont{
-    background-color: beige;
+.action-btn-cont {
+    background-color: #EEEDDE;
     height: 3rem;
     width: 10rem;
     margin-left: 5rem;
     display: flex;
-    justify-content: space-around;
     align-items: center;
+    justify-content: space-around;
+    border-radius: 2px;
 }
 
-.color{
-    background-color: red;
+.color {
     height: 1.5rem;
     width: 3rem;
 }
 
-.lightpink{
+.lightpink {
     background-color: lightpink;
 }
 
-.blue{
-    background-color: lightblue;
+.blue {
+    background-color: lightblue
 }
 
-.green{
+.green {
     background-color: lightgreen;
 }
 
-.black{
-    background-color: black;
+.black {
+    background-color: black
 }
 
-.add-btn{
+.add-btn {
     font-size: 1.5rem;
 }
 
-.remove-btn{
+.remove-btn {
     font-size: 1.5rem;
 }
 
-.modal-cont{
-    background-color: lightgrey;
+.modal-cont {
+    position: absolute;
+    left: 25vw;
+    top: 25vh;
+    background-color: #EEEDDE;
     height: 50vh;
-    width: 50vh;
-    display: flex;
-    margin-left: 20rem;
-    margin-top: 7rem;
+    width: 50vw;
     display: none;
 }
 
-.textarea-cont{
+.textarea-cont {
     outline: none;
     resize: none;
     border: none;
-    background-color: lightyellow;
+    background-color: #EEEDDE;
     height: 100%;
     width: 75%;
     font-size: 2rem;
     padding: 2rem;
+    border-right: 2px solid #141E27;
 }
 
-.priority-color-cont{
+.priority-color-cont {
     height: 100%;
     width: 25%;
     display: flex;
@@ -94,7 +100,47 @@ body{
     justify-content: space-around;
 }
 
-.priority-color{
+.priority-color {
     height: 3rem;
     width: 5rem;
+}
+
+.active {
+    border: 5px solid #E0DDAA;
+}
+
+.main-cont {
+    margin-top: 7rem;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.ticket-cont {
+    background-color: #EEEDDE;
+    height: 10rem;
+    width: 16rem;
+}
+
+.ticket-color {
+    height: 1rem;
+}
+
+.ticket-id {
+    height: 1.5rem;
+    background-color: #EEEDDE;
+}
+
+.task-area {
+    height: calc(100%-1rem-1.5rem);
+    padding: 5px;
+    font-size: 1.25rem;
+}
+
+.lock-unlock {
+    font-size: 1.5rem;
+    margin-top: 3.5rem;
+    margin-left: 14rem;
 }
