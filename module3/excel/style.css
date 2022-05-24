@@ -1,0 +1,85 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.menu-options{
+    border: 0.5px solid;
+    height: 30px;
+}
+
+.address-content{
+    border: 0.5px solid;
+    height: 30px;
+}
+
+.cells-content{
+    height: 85vh;
+    background-color: aquamarine;
+    overflow: auto;
+    position: relative;
+}
+
+.sheets{
+    border: 0.5px solid;
+    height: 30px;
+}
+
+.row{
+    display: flex;
+}
+
+.cell{
+    border: 0.2px solid;
+    height: 30px;
+    width: 100px;
+}
+
+.top-left-cell{
+    border-right: 0.1px solid;
+    border-bottom: 0.1px solid;
+    height: 30px;
+    width: 30px;
+    background-color: grey;
+    position: absolute;
+}
+
+.top-row{
+    display: flex;
+    position: absolute;
+    background-color: grey;
+    left: 30px;
+}
+
+.top-row-cell{
+    height: 30px;
+    width: 100px;
+    border-bottom: 0.1px solid;
+    border-left: 0.1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-col{
+    background-color: grey;
+    position: absolute;
+    left: 0px;
+    top: 90px;
+}
+
+.left-col-cell{
+    height: 30px;
+    width: 30px;
+    border-bottom: 0.1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cells{
+    position: absolute;
+    top: 90px;
+    left: 30px;
+}
