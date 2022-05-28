@@ -1,35 +1,41 @@
-let cellsContentDiv = document.querySelector('.cells-content');
+let topRow = document.querySelector(".top-row");
+let leftCol = document.querySelector(".left-col");
+let topLeftCell = document.querySelector(".top-left-cell");
+let allCells = document.querySelectorAll('.cell');
+let addressInput = document.querySelector('#address');
 
-function initCells(){
-    let cellsContent = "<div class='top-left-cell'></div>";
 
-    cellsContent += "<div class = 'top-row'>";
-    for(let i = 0; i < 26; i++){
-        cellsContent += `<div class = 'top-row-cell'>${String.fromCharCode(65 + i)}</div>`;
-    }
-    cellsContent += "</div>";
+cellsContentDiv.addEventListener("scroll", function (e) {
+    let scrollFromTop = e.target.scrollTop;
+    let scrollFromLeft = e.target.scrollLeft;
+    topRow.style.top = scrollFromTop + "px";
+    leftCol.style.left = scrollFromLeft + "px";
+    topLeftCell.style.top = scrollFromTop + "px";
+    topLeftCell.style.left = scrollFromLeft + "px";
+})
 
-    cellsContent += "<div class = 'left-col'>";
-    for(let i = 0; i < 100; i++){
-        cellsContent += `<div class = 'left-col-cell'>${i + 1}</div>`;
-    }
-    cellsContent += "</div>";
+for(let i = 0; i < allCells.length; i++){
+    allCells[i].addEventListener('click', function(e){
+        let rowId = Number(e.target.getAttribute('rowid'));
+        let colId = Number(e.target.getAttribute('colid'));
+        let address = String.fromCharCode(65 + colId) + (rowId + 1) + "";
+        addressInput.value = address;
+    })
 
-    cellsContent += "<div class = 'cells'>";
-    for(let i = 0; i < 100; i++){
-        cellsContent += "<div class='row'>";
-        //columns
-
-        for(let j = 0; j < 26; j++){
-            cellsContent += "<div class='cell' contentEditable>CELL</div>";
-        }
-        //closing row
-
-        cellsContent += "</div>";
-    }
-    cellsContent += "</div>";
-
-    cellsContentDiv.innerHTML = cellsContent;
+    allCells[i].addEventListener('blur', function(e){
+        let cellValue = e.target.textContent;
+        let {rowId, colId} = getRowIdColIdFromElement(e.target);
+        let cellObject = db[rowId][colId];
+        if(cellObject.value == cellValue) return;
+        cellObject.value = cellValue;
+    })
 }
 
-initCells();
+function getRowIdColIdFromElement(element) {
+    let rowId = element.getAttribute("rowid");
+    let colId = element.getAttribute("colid");
+    return {
+        rowId,
+        colId
+    }
+}
