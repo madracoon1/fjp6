@@ -33,6 +33,23 @@ for(let i = 0; i < allCells.length; i++){
         let cellObject = db[rowId][colId];
         if(cellObject.value == cellValue) return;
         cellObject.value = cellValue;
+        updateChildren(cellObject);
+    })
+
+    allCells[i].addEventListener("keydown", function (e) {
+        if (e.key == 'Backspace') {
+            let cell = e.target;
+            let { rowId, colId } = getRowIdColIdFromElement(cell);
+            let cellObject = db[rowId][colId];
+            if (cellObject.formula) {
+                //update db
+                cell.formula = "";
+                //update ui 
+                formulaInput.value = "";
+                cell.textContent = "";
+                removeFormula(cellObject);
+            }
+        }
     })
 }
 
@@ -41,7 +58,10 @@ formulaInput.addEventListener('blur', function(e){
     if(formula){
         let { rowId, colId } = getRowIdColIdFromElement(lastSelectedCell);
         let cellObject = db[rowId][colId];
-        let computedValue = solveFormula(formula); // will implement in next commit
+        if(cellObject.formula){
+            removeFormula(cellObject);
+        }
+        let computedValue = solveFormula(formula, cellObject); // will implement in next commit
         //update db
         cellObject.value = computedValue;
         cellObject.formula = formula;
