@@ -24,6 +24,14 @@ for(let i = 0; i < allCells.length; i++){
         let cellObject = db[rowId][colId];
         addressInput.value = address;
         formulaInput.value = cellObject.formula;
+        cellObject.fontStyle.bold ? document.querySelector(".bold").classList.add("active-font-style") :
+            document.querySelector(".bold").classList.remove("active-font-style");
+
+        cellObject.fontStyle.italic ? document.querySelector(".italic").classList.add("active-font-style") :
+            document.querySelector(".italic").classList.remove("active-font-style");
+
+        cellObject.fontStyle.underline ? document.querySelector(".underline").classList.add("active-font-style") :
+            document.querySelector(".underline").classList.remove("active-font-style");
     })
 
     allCells[i].addEventListener('blur', function(e){
@@ -34,6 +42,9 @@ for(let i = 0; i < allCells.length; i++){
         if(cellObject.value == cellValue) return;
         cellObject.value = cellValue;
         updateChildren(cellObject);
+        if(cellObject.visited) return;
+        cellObject.visited = true;
+        visitedCells.push({"rowId":rowId, "colId":colId});
     })
 
     allCells[i].addEventListener("keydown", function (e) {
