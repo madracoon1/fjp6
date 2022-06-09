@@ -1,6 +1,6 @@
 :root {
-    --border-color: grey;
-    --cell-background: lightgray;
+    --border-color: rgb(215, 214, 214);
+    --cell-background: white;
 }
 
 
@@ -141,7 +141,7 @@
 }
 
 .active-sheet {
-    background-color: white;
+    background-color: lightgray;
     font-weight: bold;
 }
 
@@ -170,5 +170,14 @@
 }
 
 .active-font-style{
-    background-color: var(--cell-background);
+    background-color: lightgray;
+    border-radius: 5px;
+}
+
+.active-cell{
+    border: 2px solid greenyellow;
+}
+
+.active-row-col{
+    background-color: lightgrey;
 }
